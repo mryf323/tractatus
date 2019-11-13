@@ -1,5 +1,4 @@
 import java.lang.annotation.Annotation;
-import java.lang.reflect.Method;
 
 interface AnnotationProcessor {
 
