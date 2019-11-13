@@ -10,3 +10,17 @@ If you want to use this library you just need to know these annotations.
 * [ClauseDefinition](https://mryf323.github.io/tractatus/ClauseDefinition.html)
 
 If you want to contribute to this project you can study all of its javadoc [here](https://mryf323.github.io/tractatus).
+# Dependency
+## Maven
+'''
+<dependency>
+  <groupId>com.github.mryf323</groupId>
+  <artifactId>tractatus</artifactId>
+  <version>1.0.0</version>
+</dependency>
+'''
+
+## Gradle
+'''
+implementation 'com.github.mryf323:tractatus:1.0.0'
+'''
