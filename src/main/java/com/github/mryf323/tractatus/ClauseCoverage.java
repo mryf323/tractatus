@@ -1,3 +1,5 @@
+package com.github.mryf323.tractatus;
+
 import java.lang.annotation.*;
 
 /**
@@ -18,7 +20,7 @@ import java.lang.annotation.*;
  *     }
  * </pre>
  * <p> <em>Note:</em> If a test method covers multiple clause coverage TR s,
- * you can annotate that method with {@code @ClauseCoverage} multiple times. See example below:
+ * you can annotate that method with {@code @@ClauseCoverage} multiple times. See example below:
  * <pre>
  *     &#64;ClauseCoverage(
  *      predicate = "a + b",
@@ -41,7 +43,7 @@ import java.lang.annotation.*;
  * </pre>
  * In the example above, as test2 assigns 'a' to {@code true} and 'b' to {@code false}
  * and 'c' and 'd' to {@code true} it satisfies multiple clause coverage TR s, so it is annotated
- * with {@code ClauseCoverage} multiple times.
+ * with {@ ClauseCoverage} multiple times.
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)

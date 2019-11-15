@@ -1,20 +1,20 @@
+package com.github.mryf323.tractatus;
+
 import java.lang.annotation.*;
 
 /**
- * Methods being annotated with this annotation, satisfy a near false point test requirement (TR).
+ * Methods being annotated with this annotation, satisfy a unique true point test requirement (TR).
  * This annotation indicates the original predicate, using element {@code predicate}, CNF form of that predicate
- * using {@code cnf} element, the implicant and the clause being inspected using {@code implicant} and {@code clause}
- * elements respectively. Valuations of every clause used in the predicate, are also given using {@code valuations}
- * element.
+ * using {@code cnf} element, the implicant being inspected using {@code implicant} element.
+ * Valuations of every clause used in the predicate, are also given using {@code valuations} element.
  * <p> Example below shows a sample usage of this annotation.
  * <pre>
- *     &#64;NearFalsePoint(
+ *     &#64;UniqueTruePoint(
  *      predicate = "ab + cd",
  *      cnf = "ab + cd",
  *      implicant = "ab",
- *      clause = 'a',
  *      valuations = &#123;
- *          &#64;Valuation(clause = 'a', valuation = false),
+ *          &#64;Valuation(clause = 'a', valuation = true),
  *          &#64;Valuation(clause = 'b', valuation = true),
  *          &#64;Valuation(clause = 'c', valuation = false),
  *          &#64;Valuation(clause = 'd', valuation = false)
@@ -28,13 +28,13 @@ import java.lang.annotation.*;
  * In the above example the predicate is already in CNF form, so {@code cnf} element and {@code predicate}
  * values are the same. If the predicate was something like "a (b + c)", the value of element {@code predicate} would be
  * "a (b + c)", were as the value of {@code cnf} element would be "ab + ac".
- <p><em>Note:</em> If a test method covers multiple near false point TR s,
- * you can annotate that method with {@code @NearFalsePoint} multiple times.
+  <p><em>Note:</em> If a test method covers multiple unique true point TR s,
+ * you can annotate that method with {@link UniqueTruePoint} multiple times.
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-@Repeatable(NearFalsePointContainer.class)
-public @interface NearFalsePoint {
+@Repeatable(UniqueTruePointContainer.class)
+public @interface UniqueTruePoint {
 
     /**
      * String representation of a predicate.(i.e "a (b + c)")
@@ -53,13 +53,9 @@ public @interface NearFalsePoint {
     String implicant();
 
     /**
-     * @return the clause being inspected
-     */
-    char clause();
-
-    /**
-     * Valuation of each clause.
+     * @Valuation of each clause.
      * @return an array which assigns <em>every</em> clause in the predicate a value.
      */
     Valuation[] valuations();
+
 }

@@ -1,3 +1,5 @@
+package com.github.mryf323.tractatus;
+
 import java.lang.annotation.*;
 
 /**
@@ -24,7 +26,7 @@ import java.lang.annotation.*;
  *     }
  * </pre>
  * <p><em>Note:</em> If a test method covers correlated active clause coverage TR s,
- * you can annotate that method with {@code @CACC} multiple times.
+ * you can annotate that method with {@code @@CACC} multiple times.
  **/
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)

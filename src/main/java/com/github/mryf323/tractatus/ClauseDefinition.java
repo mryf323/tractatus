@@ -1,3 +1,5 @@
+package com.github.mryf323.tractatus;
+
 import java.lang.annotation.*;
 
 /**
