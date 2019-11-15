@@ -16,7 +16,7 @@ If you want to contribute to this project you can study all of its javadoc [here
 <dependency>
   <groupId>com.github.mryf323</groupId>
   <artifactId>tractatus</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
 </dependency>
 ```
 
