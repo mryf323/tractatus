@@ -43,7 +43,7 @@ import java.lang.annotation.*;
  * </pre>
  * In the example above, as test2 assigns 'a' to {@code true} and 'b' to {@code false}
  * and 'c' and 'd' to {@code true} it satisfies multiple clause coverage TR s, so it is annotated
- * with {@ ClauseCoverage} multiple times.
+ * with {@link ClauseCoverage} multiple times.
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)

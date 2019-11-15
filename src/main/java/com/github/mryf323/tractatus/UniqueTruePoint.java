@@ -53,7 +53,7 @@ public @interface UniqueTruePoint {
     String implicant();
 
     /**
-     * @Valuation of each clause.
+     * Valuation of each clause.
      * @return an array which assigns <em>every</em> clause in the predicate a value.
      */
     Valuation[] valuations();
