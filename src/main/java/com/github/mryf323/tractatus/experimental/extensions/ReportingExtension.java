@@ -13,26 +13,9 @@ public class ReportingExtension implements BeforeAllCallback, AfterAllCallback, 
 
     private static final Logger log = LoggerFactory.getLogger(ReportingExtension.class);
 
-
-    public void postProcessTestInstance(
-            Object testInstance,
-            ExtensionContext context) throws Exception {
-        Optional<AnnotatedElement> element = context.getElement();
-        for(Annotation annotation: context.getElement().get().getAnnotations()) {
-            log.info(annotation.annotationType().getSimpleName());
-        }
-        Logger logger = LoggerFactory.getLogger(testInstance.getClass());
-        testInstance.getClass()
-                .getMethod("setLogger", Logger.class)
-                .invoke(testInstance, logger);
-    }
-
     @Override
     public void afterAll(ExtensionContext context) throws Exception {
-        Optional<AnnotatedElement> element = context.getElement();
-        for(Annotation annotation: context.getElement().get().getAnnotations()) {
-            log.info(annotation.annotationType().getSimpleName());
-        }
+        //todo
     }
 
     @Override
@@ -45,19 +28,11 @@ public class ReportingExtension implements BeforeAllCallback, AfterAllCallback, 
 
     @Override
     public void beforeAll(ExtensionContext context) throws Exception {
-
-
-
-
-
+        //todo
     }
 
     @Override
     public void beforeEach(ExtensionContext context) throws Exception {
-
-
-
-
 
     }
 }
