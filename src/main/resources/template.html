@@ -1,7 +1,45 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title>Tractatus Tests Report</title>
+    </head>
+
     <body>
-        <h3 style="text-align: center; color: green">
-            <span th:text="'Welcome to ' + ${to} + '!'"></span>
-        </h3>
+
+        <table>
+            <thead>
+            <tr>
+                <th> Title </th>
+                <th> Predicate </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:if="${reportables.empty}">
+                <td colspan="2"> No Report Generated </td>
+            </tr>
+            <tr th:each="reportable : ${reportables}">
+                <td>
+                    <span th:text="${reportable.title}"> Title </span>
+                </td>
+                <td>
+                    <span th:text="${reportable.predicate}"> Author </span>
+                </td>
+                <td>
+                    <tr th:each="explaination : ${reportable.explainations}">
+                        <td>
+                            <span th:text="${explaination}"> Title </span>
+                        </td>
+                    </tr>
+                </td>
+                <td>
+                    <tr th:each="valuation : ${reportable.valuations}">
+                        <td>
+                            <span th:text="${valuation}"> Title </span>
+                        </td>
+                    </tr>
+                </td>
+            </tr>
+            </tbody>
+        </table>
     </body>
 </html>
