@@ -2,22 +2,32 @@
 
     <head>
         <title>Tractatus Tests Report</title>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     </head>
 
     <body>
+        <h1>Tractatus Test Report</h1>
 
-        <table>
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-primary"><b>Clause Definitions</b></li>
+            <li class="list-group-item" th:each="clause_def : ${clause_def_list}" th:text="${clause_def}">Clause Definition</li>
+        </ul>
+
+        <table class="table">
             <thead>
             <tr>
-                <th> Title </th>
+                <th> Coverage Type </th>
                 <th> Predicate </th>
+                <th> Attributes </th>
+                <th> Valuations </th>
             </tr>
             </thead>
             <tbody>
-            <tr th:if="${reportables.empty}">
+            <tr th:if="${reportable_list.empty}">
                 <td colspan="2"> No Report Generated </td>
             </tr>
-            <tr th:each="reportable : ${reportables}">
+            <tr th:each="reportable : ${reportable_list}">
                 <td>
                     <span th:text="${reportable.title}"> Title </span>
                 </td>
@@ -25,18 +35,14 @@
                     <span th:text="${reportable.predicate}"> Author </span>
                 </td>
                 <td>
-                    <tr th:each="explaination : ${reportable.explainations}">
-                        <td>
-                            <span th:text="${explaination}"> Title </span>
-                        </td>
-                    </tr>
+                    <ul>
+                        <li th:each="explanation : ${reportable.explanations}" th:text="${explanation}">Explanation</li>
+                    </ul>
                 </td>
                 <td>
-                    <tr th:each="valuation : ${reportable.valuations}">
-                        <td>
-                            <span th:text="${valuation}"> Title </span>
-                        </td>
-                    </tr>
+                    <ul>
+                        <li th:each="valuation : ${reportable.valuations}" th:text="${valuation}">Valuation</li>
+                    </ul>
                 </td>
             </tr>
             </tbody>

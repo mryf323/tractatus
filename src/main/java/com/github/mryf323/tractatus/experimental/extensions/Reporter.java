@@ -1,11 +1,13 @@
 package com.github.mryf323.tractatus.experimental.extensions;
 
 import com.github.mryf323.tractatus.*;
+import org.junit.jupiter.api.Test;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 
+import java.io.*;
 import java.lang.annotation.Annotation;
 import java.util.Arrays;
 import java.util.Collections;
@@ -27,10 +29,26 @@ public enum Reporter {
         templateEngine.setTemplateResolver(templateResolver);
     }
 
-    public String format(Annotation annotation) {
+    public static Reporter getInstance() {
+        return INSTANCE;
+    }
+
+    public String format(List<ReportableTR> reportableTRs, List<String> clauseDefinitions) {
         Context context = new Context();
-        context.setVariable("to", "Baeldung");
+        context.setVariable("clause_def_list", clauseDefinitions);
+        context.setVariable("reportable_list", reportableTRs);
         return templateEngine.process("template", context);
+    }
+
+    public void save(String reportId, String string) {
+        try {
+            String path = Test.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+            path = path.substring(1, path.length()) + reportId + ".html";
+            File file = new File(path);
+            BufferedWriter out = new BufferedWriter(new FileWriter(file));
+            out.write(string);
+            out.close();
+        } catch (Exception ignored) {}
     }
 
     public String title(Annotation annotation) {
@@ -51,7 +69,7 @@ public enum Reporter {
 
     private List<String> toList(Valuation[] valuations) {
         return Arrays.stream(valuations)
-                .map(valuation -> "%c = %b".format(String.valueOf(valuation.clause()), valuation.valuation()))
+                .map(valuation -> String.format("%c = %b", valuation.clause(), valuation.valuation()))
                 .collect(Collectors.toList());
     }
 
@@ -64,9 +82,10 @@ public enum Reporter {
         );
     }
 
-    private ClauseDefinitionReport toReportable(ClauseDefinition annotation) {
-        return new ClauseDefinitionReport(
-                String.valueOf(annotation.clause()),
+    public String formatClauseDef(ClauseDefinition annotation) {
+        return String.format(
+                "%c := %s",
+                annotation.clause(),
                 annotation.def()
         );
     }
@@ -96,11 +115,27 @@ public enum Reporter {
         );
     }
 
-    private class ReportableTR {
-        final String title;
-        final String predicate;
-        final List<String> explanations;
-        final List<String> valuations;
+    public ReportableTR toReportableTR(Annotation annotation) {
+        if(annotation instanceof CACC) {
+            return toReportable((CACC) annotation);
+        }
+        if(annotation instanceof ClauseCoverage) {
+            return toReportable((ClauseCoverage) annotation);
+        }
+        if(annotation instanceof NearFalsePoint) {
+            return toReportable((NearFalsePoint) annotation);
+        }
+        if(annotation instanceof UniqueTruePoint) {
+            return toReportable((UniqueTruePoint) annotation);
+        }
+        return null;
+    }
+
+    public static class ReportableTR {
+        public final String title;
+        public final String predicate;
+        public final List<String> explanations;
+        public final List<String> valuations;
 
         public ReportableTR(String title, String predicate, List<String> explanations, List<String> valuations) {
             this.title = title;
@@ -110,7 +145,7 @@ public enum Reporter {
         }
     }
 
-    private class ClauseDefinitionReport {
+    public static class ClauseDefinitionReport {
         final String clause;
         final String definition;
 
