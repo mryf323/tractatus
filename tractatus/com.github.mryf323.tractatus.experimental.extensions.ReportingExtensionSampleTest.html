@@ -1,0 +1,119 @@
+<html lang="en">
+
+    <head>
+        <title>Tractatus Tests Report</title>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    </head>
+
+    <body>
+        <h1>Tractatus Test Report</h1>
+
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-primary"><b>Clause Definitions</b></li>
+            <li class="list-group-item">1 := last.isPresent()</li>
+            <li class="list-group-item">2 := age&gt;3</li>
+            <li class="list-group-item">3 := daysFromLastVisit&gt;364</li>
+            <li class="list-group-item">4 := age&lt;=3</li>
+            <li class="list-group-item">5 := daysFromLastVisit&gt;182</li>
+            <li class="list-group-item">6 := notVisited.size()&gt;0</li>
+        </ul>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th> Coverage Type </th>
+                <th> Predicate </th>
+                <th> Attributes </th>
+                <th> Valuations </th>
+            </tr>
+            </thead>
+            <tbody>
+            
+            <tr>
+                <td>
+                    <span>UniqueTruePoint</span>
+                </td>
+                <td>
+                    <span>2</span>
+                </td>
+                <td>
+                    <ul>
+                        <li>CNF: (c2 &amp; c3) | (~c2 &amp; c5)</li>
+                        <li>Implicant: c2 &amp; c3</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>2 = true</li>
+                        <li>3 = true</li>
+                        <li>4 = false</li>
+                        <li>5 = true</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>CACC</span>
+                </td>
+                <td>
+                    <span>2</span>
+                </td>
+                <td>
+                    <ul>
+                        <li>Predicate Value: true</li>
+                        <li>Major Clause: 2</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>NearFalsePoint</span>
+                </td>
+                <td>
+                    <span>2</span>
+                </td>
+                <td>
+                    <ul>
+                        <li>CNF: (c2 &amp; c3) | (~c2 &amp; c5)</li>
+                        <li>Implicant: c2 &amp; c3</li>
+                        <li>Clause: 3</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>2 = true</li>
+                        <li>3 = false</li>
+                        <li>4 = false</li>
+                        <li>5 = false</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>CACC</span>
+                </td>
+                <td>
+                    <span>2</span>
+                </td>
+                <td>
+                    <ul>
+                        <li>Predicate Value: false</li>
+                        <li>Major Clause: 3</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        
+                    </ul>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

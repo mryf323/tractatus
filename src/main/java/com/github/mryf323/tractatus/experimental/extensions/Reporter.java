@@ -40,15 +40,11 @@ public enum Reporter {
         return templateEngine.process("template", context);
     }
 
-    public void save(String reportId, String string) {
-        try {
-            String path = Test.class.getProtectionDomain().getCodeSource().getLocation().getPath();
-            path = path.substring(1, path.length()) + reportId + ".html";
-            File file = new File(path);
-            BufferedWriter out = new BufferedWriter(new FileWriter(file));
-            out.write(string);
-            out.close();
-        } catch (Exception ignored) {}
+    public void save(String path, String string) throws Exception {
+        File file = new File(path);
+        BufferedWriter out = new BufferedWriter(new FileWriter(file));
+        out.write(string);
+        out.close();
     }
 
     public String title(Annotation annotation) {
