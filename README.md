@@ -9,6 +9,15 @@ If you want to use this library you just need to know these annotations.
 * [@Valuation](https://mryf323.github.io/tractatus/com/github/mryf323/tractatus/Valuation.html)   
 * [@ClauseDefinition](https://mryf323.github.io/tractatus/com/github/mryf323/tractatus/ClauseDefinition.html)
 
+## Reporting
+Simply add the extension to your test classes and see the reports in the `tractatus` directory in your project root.
+Currently, reporting Junit 5 extension is experimental so feel free to report any issues. 
+```
+@ExtendWith(ReportingExtension.class)
+class YourTestClass  {
+```
+
+
 If you want to contribute to this project you can study all of its javadoc [here](https://mryf323.github.io/tractatus).
 # Dependency
 ## Maven
