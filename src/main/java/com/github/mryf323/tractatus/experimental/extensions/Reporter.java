@@ -1,7 +1,6 @@
 package com.github.mryf323.tractatus.experimental.extensions;
 
 import com.github.mryf323.tractatus.*;
-import org.junit.jupiter.api.Test;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 import org.thymeleaf.templatemode.TemplateMode;
@@ -51,7 +50,7 @@ public enum Reporter {
         return annotation.annotationType().getSimpleName();
     }
 
-    public ReportableTR toReportable(CACC annotation) {
+    private ReportableTR toReportableTR(CACC annotation) {
         return new ReportableTR(
                 title(annotation),
                 annotation.predicate(),
@@ -69,7 +68,7 @@ public enum Reporter {
                 .collect(Collectors.toList());
     }
 
-    public ReportableTR toReportable(ClauseCoverage annotation) {
+    private ReportableTR toReportableTR(ClauseCoverage annotation) {
         return new ReportableTR(
                 title(annotation),
                 annotation.predicate(),
@@ -86,7 +85,7 @@ public enum Reporter {
         );
     }
 
-    public ReportableTR toReportable(NearFalsePoint annotation) {
+    private ReportableTR toReportableTR(NearFalsePoint annotation) {
         return new ReportableTR(
                 title(annotation),
                 annotation.predicate(),
@@ -99,7 +98,7 @@ public enum Reporter {
         );
     }
 
-    public ReportableTR toReportable(UniqueTruePoint annotation) {
+    private ReportableTR toReportableTR(UniqueTruePoint annotation) {
         return new ReportableTR(
                 title(annotation),
                 annotation.predicate(),
@@ -111,18 +110,18 @@ public enum Reporter {
         );
     }
 
-    public ReportableTR toReportableTR(Annotation annotation) {
+    public ReportableTR toReportableTestRequirement(Annotation annotation) {
         if(annotation instanceof CACC) {
-            return toReportable((CACC) annotation);
+            return toReportableTR((CACC) annotation);
         }
         if(annotation instanceof ClauseCoverage) {
-            return toReportable((ClauseCoverage) annotation);
+            return toReportableTR((ClauseCoverage) annotation);
         }
         if(annotation instanceof NearFalsePoint) {
-            return toReportable((NearFalsePoint) annotation);
+            return toReportableTR((NearFalsePoint) annotation);
         }
         if(annotation instanceof UniqueTruePoint) {
-            return toReportable((UniqueTruePoint) annotation);
+            return toReportableTR((UniqueTruePoint) annotation);
         }
         return null;
     }

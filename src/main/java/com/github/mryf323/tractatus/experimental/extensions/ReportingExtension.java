@@ -45,7 +45,7 @@ public class ReportingExtension implements BeforeAllCallback, AfterAllCallback, 
         try {
             Optional<AnnotatedElement> element = context.getElement();
             for (Annotation annotation : context.getElement().get().getAnnotations()) {
-                Reporter.ReportableTR reportableTR = reporter.toReportableTR(annotation);
+                Reporter.ReportableTR reportableTR = reporter.toReportableTestRequirement(annotation);
                 if (reportableTR != null) {
                     reportableTRS.add(reportableTR);
                 }
