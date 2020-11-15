@@ -90,7 +90,7 @@ public enum Reporter {
                 title(annotation),
                 annotation.predicate(),
                 List.of(
-                        "CNF: " + annotation.cnf(),
+                        "DNF: " + annotation.dnf(),
                         "Implicant: " + annotation.implicant(),
                         "Clause: " + annotation.clause()
                 ),
@@ -103,7 +103,7 @@ public enum Reporter {
                 title(annotation),
                 annotation.predicate(),
                 List.of(
-                        "CNF: " + annotation.cnf(),
+                        "DNF: " + annotation.dnf(),
                         "Implicant: " + annotation.implicant()
                 ),
                 toList(annotation.valuations())

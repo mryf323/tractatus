@@ -23,7 +23,7 @@ class ReportingExtensionSampleTest  {
 
     @UniqueTruePoint(
             predicate = "2",
-            cnf = "(c2 & c3) | (~c2 & c5)",
+            dnf = "(c2 & c3) | (~c2 & c5)",
             implicant = "c2 & c3",
             valuations = {
                     @Valuation(clause = '2', valuation = true),
@@ -46,7 +46,7 @@ class ReportingExtensionSampleTest  {
 
     @NearFalsePoint(
             predicate = "2",
-            cnf = "(c2 & c3) | (~c2 & c5)",
+            dnf = "(c2 & c3) | (~c2 & c5)",
             implicant = "c2 & c3",
             clause = '3',
             valuations = {

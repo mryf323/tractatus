@@ -4,15 +4,15 @@ import java.lang.annotation.*;
 
 /**
  * Methods being annotated with this annotation, satisfy a near false point test requirement (TR).
- * This annotation indicates the original predicate, using element {@code predicate}, CNF form of that predicate
- * using {@code cnf} element, the implicant and the clause being inspected using {@code implicant} and {@code clause}
+ * This annotation indicates the original predicate, using element {@code predicate}, DNF form of that predicate
+ * using {@code dnf} element, the implicant and the clause being inspected using {@code implicant} and {@code clause}
  * elements respectively. Valuations of every clause used in the predicate, are also given using {@code valuations}
  * element.
  * <p> Example below shows a sample usage of this annotation.
  * <pre>
  *     &#64;NearFalsePoint(
  *      predicate = "ab + cd",
- *      cnf = "ab + cd",
+ *      dnf = "ab + cd",
  *      implicant = "ab",
  *      clause = 'a',
  *      valuations = &#123;
@@ -27,9 +27,9 @@ import java.lang.annotation.*;
  *         ...
  *     }
  * </pre>
- * In the above example the predicate is already in CNF form, so {@code cnf} element and {@code predicate}
+ * In the above example the predicate is already in DNF form, so {@code dnf} element and {@code predicate}
  * values are the same. If the predicate was something like "a (b + c)", the value of element {@code predicate} would be
- * "a (b + c)", were as the value of {@code cnf} element would be "ab + ac".
+ * "a (b + c)", were as the value of {@code dnf} element would be "ab + ac".
  <p><em>Note:</em> If a test method covers multiple near false point TR s,
  * you can annotate that method with {@code @NearFalsePoint} multiple times.
  */
@@ -45,9 +45,9 @@ public @interface NearFalsePoint {
     String predicate();
 
     /**
-     * @return CNF form of the predicate
+     * @return DNF form of the predicate
      */
-    String cnf();
+    String dnf();
 
     /**
      * @return the implicant being inspected

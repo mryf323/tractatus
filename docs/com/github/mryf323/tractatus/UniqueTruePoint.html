@@ -96,14 +96,14 @@
  @Repeatable(value=<a href="../../../../com/github/mryf323/tractatus/UniqueTruePointContainer.html" title="annotation in com.github.mryf323.tractatus">UniqueTruePointContainer.class</a>)
 public @interface <span class="memberNameLabel">UniqueTruePoint</span></pre>
 <div class="block">Methods being annotated with this annotation, satisfy a unique true point test requirement (TR).
- This annotation indicates the original predicate, using element <code>predicate</code>, CNF form of that predicate
- using <code>cnf</code> element, the implicant being inspected using <code>implicant</code> element.
+ This annotation indicates the original predicate, using element <code>predicate</code>, DNF form of that predicate
+ using <code>dnf</code> element, the implicant being inspected using <code>implicant</code> element.
  Valuations of every clause used in the predicate, are also given using <code>valuations</code> element.
  <p> Example below shows a sample usage of this annotation.
  <pre>
      &#64;UniqueTruePoint(
       predicate = "ab + cd",
-      cnf = "ab + cd",
+      dnf = "ab + cd",
       implicant = "ab",
       valuations = &#123;
           &#64;Valuation(clause = 'a', valuation = true),
@@ -117,9 +117,9 @@ public @interface <span class="memberNameLabel">UniqueTruePoint</span></pre>
          ...
      }
  </pre>
- In the above example the predicate is already in CNF form, so <code>cnf</code> element and <code>predicate</code>
+ In the above example the predicate is already in DNF form, so <code>dnf</code> element and <code>predicate</code>
  values are the same. If the predicate was something like "a (b + c)", the value of element <code>predicate</code> would be
- "a (b + c)", were as the value of <code>cnf</code> element would be "ab + ac".
+ "a (b + c)", were as the value of <code>dnf</code> element would be "ab + ac".
   <p><em>Note:</em> If a test method covers multiple unique true point TR s,
  you can annotate that method with <a href="../../../../com/github/mryf323/tractatus/UniqueTruePoint.html" title="annotation in com.github.mryf323.tractatus"><code>UniqueTruePoint</code></a> multiple times.</div>
 </li>
@@ -142,7 +142,7 @@ public @interface <span class="memberNameLabel">UniqueTruePoint</span></pre>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/github/mryf323/tractatus/UniqueTruePoint.html#cnf--">cnf</a></span></code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/github/mryf323/tractatus/UniqueTruePoint.html#dnf--">dnf</a></span></code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
@@ -192,16 +192,16 @@ public @interface <span class="memberNameLabel">UniqueTruePoint</span></pre>
 </li>
 </ul>
 <ul class="blockList">
-<li class="blockList"><a name="cnf--">
+<li class="blockList"><a name="dnf--">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>cnf</h4>
-<pre>public abstract&nbsp;java.lang.String&nbsp;cnf</pre>
+<h4>dnf</h4>
+<pre>public abstract&nbsp;java.lang.String&nbsp;dnf</pre>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>CNF form of the predicate</dd>
+<dd>DNF form of the predicate</dd>
 </dl>
 </li>
 </ul>
