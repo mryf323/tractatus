@@ -38,28 +38,4 @@ class ReportingExtensionSampleTest  {
         assertTrue(predicate(0,0,1,0));
     }
 
-    @NearFalsePoint(
-            predicate = "2",
-            dnf = "(c2 & c3) | (~c2 & c5)",
-            implicant = "c2 & c3",
-            clause = '3',
-            valuations = {
-                    @Valuation(clause = '2', valuation = true),
-                    @Valuation(clause = '3', valuation = false),
-                    @Valuation(clause = '4', valuation = false),
-                    @Valuation(clause = '5', valuation = false)
-            }
-    )
-    @CACC(
-            predicate = "2",
-            majorClause = '3',
-            valuations = {
-                    /*LIKE ABOVE*/
-            },
-            predicateValue = false
-    )
-    @Test
-    public void visitOwnerPetsTP2() {
-    }
-
 }

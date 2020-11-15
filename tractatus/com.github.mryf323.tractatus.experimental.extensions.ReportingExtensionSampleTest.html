@@ -11,12 +11,10 @@
 
         <ul class="list-group">
             <li class="list-group-item list-group-item-primary"><b>Clause Definitions</b></li>
-            <li class="list-group-item">1 := last.isPresent()</li>
-            <li class="list-group-item">2 := age&gt;3</li>
-            <li class="list-group-item">3 := daysFromLastVisit&gt;364</li>
-            <li class="list-group-item">4 := age&lt;=3</li>
-            <li class="list-group-item">5 := daysFromLastVisit&gt;182</li>
-            <li class="list-group-item">6 := notVisited.size()&gt;0</li>
+            <li class="list-group-item">a := x == 0</li>
+            <li class="list-group-item">b := y == 0</li>
+            <li class="list-group-item">c := z == 0</li>
+            <li class="list-group-item">d := w == 0</li>
         </ul>
 
         <table class="table">
@@ -30,47 +28,6 @@
             </thead>
             <tbody>
             
-            <tr>
-                <td>
-                    <span>UniqueTruePoint</span>
-                </td>
-                <td>
-                    <span>2</span>
-                </td>
-                <td>
-                    <ul>
-                        <li>DNF: (c2 &amp; c3) | (~c2 &amp; c5)</li>
-                        <li>Implicant: c2 &amp; c3</li>
-                    </ul>
-                </td>
-                <td>
-                    <ul>
-                        <li>2 = true</li>
-                        <li>3 = true</li>
-                        <li>4 = false</li>
-                        <li>5 = true</li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span>CACC</span>
-                </td>
-                <td>
-                    <span>2</span>
-                </td>
-                <td>
-                    <ul>
-                        <li>Predicate Value: true</li>
-                        <li>Major Clause: 2</li>
-                    </ul>
-                </td>
-                <td>
-                    <ul>
-                        
-                    </ul>
-                </td>
-            </tr>
             <tr>
                 <td>
                     <span>NearFalsePoint</span>
@@ -110,6 +67,28 @@
                 <td>
                     <ul>
                         
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>UniqueTruePoint</span>
+                </td>
+                <td>
+                    <span>ab</span>
+                </td>
+                <td>
+                    <ul>
+                        <li>DNF: ab + acd</li>
+                        <li>Implicant: a(b + cd)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>a = true</li>
+                        <li>b = true</li>
+                        <li>c = false</li>
+                        <li>d = true</li>
                     </ul>
                 </td>
             </tr>
