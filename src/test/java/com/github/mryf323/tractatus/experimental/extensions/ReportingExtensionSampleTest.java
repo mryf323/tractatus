@@ -1,47 +1,41 @@
 package com.github.mryf323.tractatus.experimental.extensions;
 
 import com.github.mryf323.tractatus.*;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@ClauseDefinitionContainer(value = {
-        @ClauseDefinition(clause = '1', def = "last.isPresent()"),
-        @ClauseDefinition(clause = '2', def = "age>3"),
-        @ClauseDefinition(clause = '3', def = "daysFromLastVisit>364"),
-        @ClauseDefinition(clause = '4', def = "age<=3"),
-        @ClauseDefinition(clause = '5', def = "daysFromLastVisit>182"),
-        @ClauseDefinition(clause = '6', def = "notVisited.size()>0")
-})
+
 @ExtendWith(ReportingExtension.class)
+@ClauseDefinition(clause = 'a', def = "x == 0")
+@ClauseDefinition(clause = 'b', def = "y == 0")
+@ClauseDefinition(clause = 'c', def = "z == 0")
+@ClauseDefinition(clause = 'd', def = "w == 0")
 class ReportingExtensionSampleTest  {
 
-    @BeforeEach
-    public void setup() {
+    public boolean predicate(int x, int y, int z, int w) {
+        if(x == 0 && (y == 0 || z == 0 && w == 0)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @UniqueTruePoint(
-            predicate = "2",
-            dnf = "(c2 & c3) | (~c2 & c5)",
-            implicant = "c2 & c3",
+            predicate = "ab",
+            dnf = "ab + acd",
+            implicant = "a(b + cd)",
             valuations = {
-                    @Valuation(clause = '2', valuation = true),
-                    @Valuation(clause = '3', valuation = true),
-                    @Valuation(clause = '4', valuation = false),
-                    @Valuation(clause = '5', valuation = true)
+                    @Valuation(clause = 'a', valuation = true),
+                    @Valuation(clause = 'b', valuation = true),
+                    @Valuation(clause = 'c', valuation = false),
+                    @Valuation(clause = 'd', valuation = true)
             }
     )
-    @CACC(
-            predicate = "2",
-            majorClause = '2',
-            valuations = {
-                    /*LIKE ABOVE*/
-            },
-            predicateValue = true
-    )
     @Test
-    public void visitOwnerPetsTP1() {
+    public void testSampleOne() {
+        assertTrue(predicate(0,0,1,0));
     }
 
     @NearFalsePoint(
