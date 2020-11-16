@@ -2,7 +2,6 @@ package com.github.mryf323.tractatus.experimental.extensions;
 
 import com.github.mryf323.tractatus.ClauseDefinition;
 import com.github.mryf323.tractatus.ClauseDefinitionContainer;
-import jdk.jfr.Experimental;
 import org.junit.jupiter.api.extension.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +14,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-@Experimental
 public class ReportingExtension implements BeforeAllCallback, AfterAllCallback, BeforeEachCallback, AfterEachCallback {
 
     private static final Reporter reporter = Reporter.getInstance();

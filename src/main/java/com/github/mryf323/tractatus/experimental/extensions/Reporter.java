@@ -54,7 +54,7 @@ public enum Reporter {
         return new ReportableTR(
                 title(annotation),
                 annotation.predicate(),
-                List.of(
+                Arrays.asList(
                         "Predicate Value: " + annotation.predicateValue(),
                         "Major Clause: " + annotation.majorClause()
                 ),
@@ -89,8 +89,8 @@ public enum Reporter {
         return new ReportableTR(
                 title(annotation),
                 annotation.predicate(),
-                List.of(
-                        "CNF: " + annotation.cnf(),
+                Arrays.asList(
+                        "DNF: " + annotation.dnf(),
                         "Implicant: " + annotation.implicant(),
                         "Clause: " + annotation.clause()
                 ),
@@ -102,8 +102,8 @@ public enum Reporter {
         return new ReportableTR(
                 title(annotation),
                 annotation.predicate(),
-                List.of(
-                        "CNF: " + annotation.cnf(),
+                Arrays.asList(
+                        "DNF: " + annotation.dnf(),
                         "Implicant: " + annotation.implicant()
                 ),
                 toList(annotation.valuations())
