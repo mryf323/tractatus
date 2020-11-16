@@ -27,7 +27,7 @@ import java.lang.annotation.*;
  * </pre>
  * In the above example the predicate is already in DNF form, so {@code dnf} element and {@code predicate}
  * values are the same. If the predicate was something like "a (b + c)", the value of element {@code predicate} would be
- * "a (b + c)", were as the value of {@code dnf} element wouزld be "ab + ac".
+ * "a (b + c)", were as the value of {@code dnf} element would be "ab + ac".
   <p><em>Note:</em> If a test method covers multiple unique true point TR s,
  * you can annotate that method with {@link UniqueTruePoint} multiple times.
  */
